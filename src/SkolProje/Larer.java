@@ -51,7 +51,9 @@ public class Larer {
 
                     branstanOgretmenBulma ();
                     break ;
-                case "4" :
+                case "4" :  // Bilgilerini Girerek Ogretmen Ekleme
+                    ogretmenEkleme();
+
                     break ;
                 case "5" :
                     break ;
@@ -72,6 +74,25 @@ public class Larer {
 
         } while (!tercih.equalsIgnoreCase("q"));
         SkolProje.Lager.projeDurdur();
+    }
+
+    public static void ogretmenEkleme() {
+
+        System.out.println("Tc No");;
+        String tcNo = scan.nextLine();
+        System.out.println("isim");;
+        String isim = scan.nextLine();
+        System.out.println("soyisim");;
+        String soyisim = scan.nextLine();
+        System.out.println("Dogum yili");;
+        String dYili = scan.nextLine();
+        System.out.println("Brans");;
+        String brans = scan.nextLine();
+
+        String eklenecekVlue = isim + ", " + soyisim + ", " + dYili + ", " + brans;
+        ogretmenlerMap.put(tcNo, eklenecekVlue);
+
+
     }
 
     public static void branstanOgretmenBulma() throws InterruptedException {

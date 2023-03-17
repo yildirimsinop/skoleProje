@@ -47,7 +47,9 @@ public class Larer {
                 case "2" : // Soyisimden Ogretmen Bulma
                     soyisimdenOgretmenBulma ();
                     break ;
-                case "3" :
+                case "3" :  // Branstan Ogretmen Bulma
+
+                    branstanOgretmenBulma ();
                     break ;
                 case "4" :
                     break ;
@@ -70,6 +72,34 @@ public class Larer {
 
         } while (!tercih.equalsIgnoreCase("q"));
         SkolProje.Lager.projeDurdur();
+    }
+
+    public static void branstanOgretmenBulma() throws InterruptedException {
+        System.out.printf("Aradiginiz ogretmenin bransini giriniz");
+        String istenenBrans = scan.nextLine();
+
+        Set<Map.Entry<String,String>> ogretmenEntrySet = ogretmenlerMap.entrySet();
+
+        System.out.println("     ========== YILDIZ KOLEJI ==============\n"+
+                "===========BRANS ILE OGRETMEN ARAMA ============\n" +
+                "TC No        Isim     Soyisim   D.Yili  Brans");
+
+        for (Map.Entry<String,String> each : ogretmenEntrySet
+        ) {
+            String eachKey= each.getKey();
+            String eachVlue = each.getValue();
+
+            String eachValuarr[] = eachVlue.split(", ");
+
+            if (istenenBrans.equalsIgnoreCase(eachValuarr[3])) {
+                System.out.printf("%11s %-6s   %-8s  %4s    %s \n" , eachKey,  eachValuarr[0], eachValuarr[1],
+                        eachValuarr[2],  eachValuarr[3]);
+            }
+        }
+
+        Thread.sleep(3000);
+
+
     }
 
     public static void soyisimdenOgretmenBulma() throws InterruptedException {

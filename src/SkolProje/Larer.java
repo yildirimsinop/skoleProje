@@ -3,6 +3,7 @@ package SkolProje;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Larer {
 
@@ -41,6 +42,7 @@ public class Larer {
             switch (tercih) {
 
                 case "1" :
+                    ogretmenListesiYazdir();
                     break ;
                 case "2" :
                     break ;
@@ -67,5 +69,26 @@ public class Larer {
 
         } while (!tercih.equalsIgnoreCase("q"));
         SkolProje.Lager.projeDurdur();
+    }
+
+    public static void ogretmenListesiYazdir() throws InterruptedException {
+        Set<Map.Entry<String,String>> ogretmenEntrySet = ogretmenlerMap.entrySet();
+
+        System.out.println("     ========== YILDIZ KOLEJI ==============\n"+
+                       "============= OGRETMEN LISTESI ================\n" +
+                "TC No        Isim     Soyisim   D.Yili  Brans");
+
+        for (Map.Entry<String,String> each : ogretmenEntrySet
+             ) {
+            String eachKey= each.getKey();
+            String eachVlue = each.getValue();
+
+            String eachValuarr[] = eachVlue.split(", ");
+
+            System.out.printf("%11s %-6s   %-8s  %4s    %s \n" , eachKey,  eachValuarr[0], eachValuarr[1],
+                    eachValuarr[2],  eachValuarr[3]);
+        }
+
+        Thread.sleep(3000);
     }
 }

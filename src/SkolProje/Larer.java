@@ -44,7 +44,8 @@ public class Larer {
                 case "1" :
                     ogretmenListesiYazdir();
                     break ;
-                case "2" :
+                case "2" : // Soyisimden Ogretmen Bulma
+                    soyisimdenOgretmenBulma ();
                     break ;
                 case "3" :
                     break ;
@@ -71,7 +72,35 @@ public class Larer {
         SkolProje.Lager.projeDurdur();
     }
 
+    public static void soyisimdenOgretmenBulma() throws InterruptedException {
+
+        System.out.printf("Aradiginiz ogretmenin soyismini giriniz");
+        String istenenSoyisim = scan.nextLine();
+
+        Set<Map.Entry<String,String>> ogretmenEntrySet = ogretmenlerMap.entrySet();
+
+        System.out.println("     ========== YILDIZ KOLEJI ==============\n"+
+                "===========SOYISIM ILE OGRETMEN ARAMA ============\n" +
+                "TC No        Isim     Soyisim   D.Yili  Brans");
+
+        for (Map.Entry<String,String> each : ogretmenEntrySet
+        ) {
+            String eachKey= each.getKey();
+            String eachVlue = each.getValue();
+
+            String eachValuarr[] = eachVlue.split(", ");
+
+            if (istenenSoyisim.equalsIgnoreCase(eachValuarr[1])) {
+                System.out.printf("%11s %-6s   %-8s  %4s    %s \n" , eachKey,  eachValuarr[0], eachValuarr[1],
+                        eachValuarr[2],  eachValuarr[3]);
+            }
+        }
+
+        Thread.sleep(3000);
+    }
+
     public static void ogretmenListesiYazdir() throws InterruptedException {
+
         Set<Map.Entry<String,String>> ogretmenEntrySet = ogretmenlerMap.entrySet();
 
         System.out.println("     ========== YILDIZ KOLEJI ==============\n"+
